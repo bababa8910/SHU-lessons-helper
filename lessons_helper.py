@@ -67,7 +67,7 @@ def choose_lesson(driver, lesson_id, teacher_id,campus):
         cout += 1
         time.sleep(1)
         source = driver.page_source
-        bs_html = BeautifulSoup(source, 'lxml')
+        bs_html = BeautifulSoup(source, 'html.parser')
         link = bs_html.find_all("tr")
         for i in link:
             if lesson_id in str(i):
