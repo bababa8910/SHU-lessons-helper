@@ -108,7 +108,7 @@ if __name__ == '__main__':
 
     '''请将自己的driver地址覆盖下面的默认地址'''
 
-    driver_path = 'C:\Program Files\Google\Chrome\Application\chromedriver.exe'
+    driver_path = './chromedriver.exe'
 
 
     lessons_url = 'http://xk.autoisp.shu.edu.cn' #不要动
