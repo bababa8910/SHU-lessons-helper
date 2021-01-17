@@ -1,5 +1,5 @@
 # SHU-lessons-helper
-上海大学选课助手，让你不用时刻坐在电脑前等心意的课有空缺：）
+上海大学选课助手，让你不用时刻坐在电脑前等心仪的课有空缺：）
 
 1、请先安装谷歌浏览器chrome和配置chrome的chromedriver
 
