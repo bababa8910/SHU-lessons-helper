@@ -1,6 +1,9 @@
 # SHU-lessons-helper
 上海大学选课助手，让你不用时刻坐在电脑前等心仪的课有空缺，而且不会导致账号被ban，请酌情使用：）
 
+先尝试是否能使用，不能使用再进行以下配置
+
+'''
 1、请先安装谷歌浏览器chrome和配置chrome的chromedriver
 
 chromedriver下载地址http://npm.taobao.org/mirrors/chromedriver/
@@ -8,10 +11,10 @@ chromedriver下载地址http://npm.taobao.org/mirrors/chromedriver/
 请按照浏览器版本下载，下载好后请将其放到谷歌浏览器根目录和python根目录下
 
 将webdriver在浏览器目录中的绝对地址复制到py文件中，覆盖掉之前存在的示例地址
-
+'''
 
 2、配置Python环境:
-  selenium、bs4
+    selenium、bs4
   
 3、更改学号、姓名、课程号、教师号，然后可以开始尝试抢课了
 
@@ -22,3 +25,5 @@ chromedriver下载地址http://npm.taobao.org/mirrors/chromedriver/
 6、脚本写的较为匆忙，没有加入异常处理，请见谅。
 
 7、小脚本有很多问题，经过尝试已经抢到几门课，欢迎大家改进、指导、斧正。邮箱：silicon@shu.edu.cn
+
+8、此脚本仅可用于学习用途，其余做法产生的结果本人概不负责。
