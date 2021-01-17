@@ -1,17 +1,18 @@
 # SHU-lessons-helper
 上海大学选课助手，让你不用时刻坐在电脑前等心仪的课有空缺，而且不会导致账号被ban，请酌情使用：）
 
-先尝试是否能使用，不能使用再进行以下配置
 
-'''
-1、请先安装谷歌浏览器chrome和配置chrome的chromedriver
+
+1、先尝试是否能使用，不能使用再进行以下配置
+
+请先安装谷歌浏览器chrome和配置chrome的chromedriver
 
 chromedriver下载地址http://npm.taobao.org/mirrors/chromedriver/
 
 请按照浏览器版本下载，下载好后请将其放到谷歌浏览器根目录和python根目录下
 
 将webdriver在浏览器目录中的绝对地址复制到py文件中，覆盖掉之前存在的示例地址
-'''
+
 
 2、配置Python环境:
     selenium、bs4
