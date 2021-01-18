@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 import os, time
 
 
-def take_lessons(driver_path, url, username, password, lesson_id, teacher_id,campus):
+def take_lessons(driver_path, url, username, password, lesson_id, teacher_id,campus,fucy):
     chromedriver = driver_path.strip()
 
     os.environ['webdriver.Chrome.driver'] = chromedriver
@@ -24,7 +24,7 @@ def take_lessons(driver_path, url, username, password, lesson_id, teacher_id,cam
         login(username, password, driver)
         title = driver.title
         if title == '上海大学本硕博一体化选课系统':
-            choose_lesson(driver, lesson_id, teacher_id,campus)
+            choose_lesson(driver, lesson_id, teacher_id,campus,fucy)
             return 0
         else:
             time.sleep(60)
@@ -52,7 +52,7 @@ def login(username, password, driver):
     driver.find_element_by_tag_name('button').click()
 
 
-def choose_lesson(driver, lesson_id, teacher_id,campus):
+def choose_lesson(driver, lesson_id, teacher_id,campus,fucy):
     start_time = time.time()
     driver.get('http://xk.autoisp.shu.edu.cn/CourseSelectionStudent/FuzzyQuery')
     time.sleep(2)
@@ -63,12 +63,12 @@ def choose_lesson(driver, lesson_id, teacher_id,campus):
     cout = 1
     while True:
         driver.find_element_by_id('QueryAction').click()
+        time.sleep(fucy)
+        source = driver.page_source
+        bs_html = BeautifulSoup(source, 'lxml')
+        link = bs_html.find_all("tr")
         print('已经尝试{}次'.format(cout))
         cout += 1
-        time.sleep(1)
-        source = driver.page_source
-        bs_html = BeautifulSoup(source, 'html.parser')
-        link = bs_html.find_all("tr")
         for i in link:
             if lesson_id in str(i):
                 for td in list(i):
@@ -80,12 +80,13 @@ def choose_lesson(driver, lesson_id, teacher_id,campus):
 
                         if limit != selected:
                             driver.find_element_by_class_name('rowchecker').click()
-                            time.sleep(0.2)
+                            time.sleep(0.1)
                             driver.find_element_by_id('CourseCheckAction').click()
                             end_time = time.time()
                             driver.get_screenshot_as_file('./resule.png')
                             print('恭喜，选课成功，共尝试%d次，共用%.3f秒钟'%(cout,(end_time-start_time)))
                             driver.quit()
+                            return 0
                             
 
 
@@ -97,18 +98,18 @@ if __name__ == '__main__':
     #                                                                               #
     #                            作者：SiliconHe                                     #
     #                                                                               #
-    #                              版本：V1.0                                        #
+    #                              版本：V1.0.1                                      #
     #                                                                               #
-    #                           最后更新日期：2021/1/17                                #
+    #                           最后更新日期：2021/1/17                               #
     #                                                                               #
-    #                            P.S.请连接校园网再启动                                 #
+    #                            P.S.请连接校园网再启动                               #
     #                                                                               #
     #                                                                               #
     #################################################################################
 
     '''请将自己的driver地址覆盖下面的默认地址'''
 
-    driver_path = './chromedriver.exe'
+    driver_path = 'C:\Program Files\Google\Chrome\Application\chromedriver.exe'
 
 
     lessons_url = 'http://xk.autoisp.shu.edu.cn' #不要动
@@ -117,13 +118,14 @@ if __name__ == '__main__':
 
     password = 'SiliconHe666'  #请输入自己的密码
 
-    lesson_id = '07286032'  #请输入想要抢的课程号
+    lesson_id = '07276064'  #请输入想要抢的课程号
 
     teacher_id = '1000'   #请输入对应的老师号
 
     campus = '宝山'   #请输入校区(宝山/延长/嘉定)
 
+    fucy = 0.5   #查询时间间隔，单位秒
 
 
     take_lessons(driver_path=driver_path, url=lessons_url, username=username,
-                 password=password, lesson_id=lesson_id, teacher_id=teacher_id,campus = campus)
+                 password=password, lesson_id=lesson_id, teacher_id=teacher_id,campus = campus,fucy = fucy)
