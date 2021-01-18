@@ -65,7 +65,7 @@ def choose_lesson(driver, lesson_id, teacher_id,campus,fucy):
         driver.find_element_by_id('QueryAction').click()
         time.sleep(fucy)
         source = driver.page_source
-        bs_html = BeautifulSoup(source, 'lxml')
+        bs_html = BeautifulSoup(source, 'html.parser')
         link = bs_html.find_all("tr")
         print('已经尝试{}次'.format(cout))
         cout += 1
@@ -100,7 +100,7 @@ if __name__ == '__main__':
     #                                                                               #
     #                              版本：V1.0.1                                      #
     #                                                                               #
-    #                           最后更新日期：2021/1/17                               #
+    #                           最后更新日期：2021/1/18                               #
     #                                                                               #
     #                            P.S.请连接校园网再启动                               #
     #                                                                               #
