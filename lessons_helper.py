@@ -124,7 +124,7 @@ if __name__ == '__main__':
 
     campus = '宝山'   #请输入校区(宝山/延长/嘉定)
 
-    fucy = 0.5   #查询时间间隔，单位秒
+    fucy = 1   #查询时间间隔，单位秒
 
 
     take_lessons(driver_path=driver_path, url=lessons_url, username=username,
